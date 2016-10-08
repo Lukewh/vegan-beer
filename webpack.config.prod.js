@@ -14,5 +14,6 @@ const plugins = [
 ];
 
 prodConfig.plugins = plugins;
+prodConfig.devtool = 'eval';
 
 module.exports = prodConfig;

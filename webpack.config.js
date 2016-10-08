@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, 'app/public/js');
 const APP_DIR = path.resolve(__dirname, 'src/js');
 
 const config = {
-  devtool: 'eval',
+  devtool: 'sourcemap',
   entry: `${APP_DIR}/App.js`,
   output: {
     path: BUILD_DIR,
