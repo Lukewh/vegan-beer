@@ -60,6 +60,7 @@ router.get('/api/beers/search/:beer', (req, res) => {
 
 app.use('/', router);
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 app.listen(3000, () => {
   console.log('App is running on port 3000');
