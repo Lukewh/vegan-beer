@@ -1,9 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {debounce} from 'throttle-debounce';
 import SearchResults from './SearchResults';
-
-const debounceTimeout = 500;
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -12,25 +9,44 @@ class SearchForm extends React.Component {
       value: '',
       results: []
     };
-    this.getData = debounce(debounceTimeout, this.getData);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.getData(e.target.value);
+    this.setState({
+      value: e.target.value
+    });
   }
 
-  getData(value) {
-    this.setState({ value: value });
+  submitForm(e) {
+    e.preventDefault();
+    this.getData();
+  }
+
+  getData() {
     fetch(`/api/beer?search=${this.state.value.toLowerCase()}`)
-      .then(res => res.json())
-      .then(data => this.state.results = data.beer)
-      .catch(error => console.error(error));
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          results: data.beer
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     return (
-      <div className="search-form">
-        <p><input type="search" onKeyUp={this.handleChange.bind(this)}/></p>
+      <div>
+        <form className="search-form" action="/" method="GET" onSubmit={this.submitForm.bind(this)}>
+          <p>
+            <input type="search" onChange={this.handleChange}/>
+            <button type="submit" className="btn">Go!</button>
+          </p>
+        </form>
         <div>
           <SearchResults results={this.state.results}/>
         </div>
