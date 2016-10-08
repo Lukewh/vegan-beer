@@ -5,12 +5,12 @@ const autoprefixer = require('gulp-autoprefixer');
 const gulpif = require('gulp-if');
 
 const webpack = require('webpack-stream');
+const webpackConfigDev = require('./webpack.config');
+const webpackConfigProd = require('./webpack.config.prod');
 
 const normalize = require('node-normalize-scss').includePaths;
 const bourbon = require('node-bourbon').includePaths;
 const neat = require('node-neat').includePaths;
-
-const compileSourcemaps = !process.argv.indexOf('--prod');
 
 const sassOptions = {
   includePaths: [].concat(normalize, bourbon, neat),
@@ -32,18 +32,27 @@ const paths = {
   }
 };
 
+let isProduction;
+
+if (process.argv.indexOf('--prod') !== -1) {
+  isProduction = true;
+} else {
+  isProduction = false;
+}
+
 gulp.task('sass', () => {
   gulp.src(paths.sass.src)
-    .pipe(gulpif(compileSourcemaps, sourcemaps.init()))
+    .pipe(gulpif(isProduction, sourcemaps.init()))
     .pipe(sass(sassOptions))
     .pipe(autoprefixer(autoprefixerOptions))
-    .pipe(gulpif(compileSourcemaps, sourcemaps.write('.')))
+    .pipe(gulpif(isProduction, sourcemaps.write('.')))
     .pipe(gulp.dest(paths.sass.dest));
 });
 
 gulp.task('js', () => {
   gulp.src(paths.js.src)
-    .pipe(webpack(require('./webpack.config')))
+    .pipe(gulpif(isProduction, webpack(webpackConfigProd)))
+    .pipe(gulpif(!isProduction, webpack(webpackConfigDev)))
     .pipe(gulp.dest(paths.js.dest));
 });
 
