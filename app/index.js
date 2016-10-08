@@ -1,43 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const url = require('url');
 
 const router = express.Router();
 const app = express();
 
 const config = require('../config/app-config');
 
-const barnivoreBeerApiUrl = 'http://barnivore.com/beer.json';
-const barnivoreSearchApiUrl = 'http://barnivore.com/search.json?keyword=';
+const barnivoreBeerApiUrl = 'http://barnivore.com/search.json';
 
-router.get('/api/beers', (req, res) => {
-  request(barnivoreBeerApiUrl, (error, response, body) => {
-    if (error) {
-      res.json({
-        error: error
-      });
+router.get('/api/beer', (req, res) => {
+  const urlParts = url.parse(req.url, true);
+  const searchQuery = urlParts.query.search;
+  const apiUrl = `${barnivoreBeerApiUrl}?keyword=${searchQuery}`;
 
-      return;
-    }
-
-    if (response.statusCode !== 200) {
-      res.json({
-        error: {
-          status: response.statusCode
-        }
-      });
-
-      return;
-    }
-
-    res.json({
-      beers: JSON.parse(body)
-    });
-  });
-});
-
-router.get('/api/beers/search/:beer', (req, res) => {
-  request(barnivoreSearchApiUrl + req.params.beer, (error, response, body) => {
+  request(apiUrl, (error, response, body) => {
     if (error) {
       res.json({
         error: error
