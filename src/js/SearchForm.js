@@ -43,7 +43,7 @@ class SearchForm extends React.Component {
       <div>
         <form className="search-form" action="/" method="GET" onSubmit={this.submitForm.bind(this)}>
           <p>
-            <input type="search" onChange={this.handleChange}/>
+            <input type="search" onChange={this.handleChange} required="required"/>
             <button type="submit" className="btn">Go!</button>
           </p>
         </form>

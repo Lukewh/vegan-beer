@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 
 class SearchResults extends React.Component {
   render() {
-    if (this.props && this.props.results.length) {
+    if (this.props && this.props.results && this.props.results.length) {
       return (
         <div>
           {
