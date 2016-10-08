@@ -1,25 +1,32 @@
 import React from 'react';
 import {render} from 'react-dom';
-import SearchResults from './SearchResults';
 
-class App extends React.Component {
-  getResults() {
-    const beerName = document.getElementById('search').value;
-    fetch(`/api/beers/search/${beerName}`)
-      .then(res => res.json())
-      .then(data => console.log('data', data))
-      .catch(error => console.error('error', error));
+class SearchForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: 'Carlsberg' };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+    fetch(`/api/beer?search=${this.state.value}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log('data', data);
+      })
+      .catch((error) => {
+        console.error(error)
+      });
   }
 
   render() {
     return (
-      <div>
-        <input type="search" name="search" id="search" placeholder="e.g. Carlsberg"/>
-        <button className="btn" onClick={this.getResults}>Go!</button>
-        <SearchResults/>
-      </div>
+      <input type="search" value={this.state.value} onChange={this.handleChange}/>
     );
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(<SearchForm/>, document.getElementById('app'));

@@ -35,7 +35,7 @@ router.get('/api/beer', (req, res) => {
     }
 
     res.json({
-      beers: JSON.parse(body)
+      beer: JSON.parse(body)
     });
   });
 });
