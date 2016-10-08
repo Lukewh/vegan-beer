@@ -2,9 +2,8 @@
   "name": "vegan-beer",
   "version": "0.0.1",
   "description": "A simple app based on the Barnivore API to check whether or not a beer is vegan-friendly",
-  "main": "index.js",
-  "scripts": {
-  },
+  "main": "./app/index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/steverydz/vegan-beer.git"
@@ -19,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/steverydz/vegan-beer/issues"
   },
-  "homepage": "https://github.com/steverydz/vegan-beer#readme"
+  "homepage": "https://github.com/steverydz/vegan-beer#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.75.0"
+  }
 }
