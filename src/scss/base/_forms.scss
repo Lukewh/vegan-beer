@@ -1,0 +1,17 @@
+input[type="text"],
+input[type="search"] {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font: inherit;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font: inherit;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+}
