@@ -7,7 +7,8 @@ class SearchForm extends React.Component {
     super(props);
     this.state = {
       value: '',
-      results: []
+      results: [],
+      loading: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,13 +25,18 @@ class SearchForm extends React.Component {
   }
 
   getData() {
+    this.setState({
+      loading: true
+    });
+
     fetch(`/api/beer?search=${this.state.value.toLowerCase()}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         this.setState({
-          results: data.beer
+          results: data.beer,
+          loading: false
         });
       })
       .catch((error) => {
@@ -39,19 +45,25 @@ class SearchForm extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <form className="search-form" action="/" method="GET" onSubmit={this.submitForm.bind(this)}>
-          <p>
-            <input type="search" onChange={this.handleChange} required="required"/>
-            <button type="submit" className="btn">Go!</button>
-          </p>
-        </form>
+    if (this.state.loading) {
+      return (
+        <div>Loading...</div>
+      );
+    } else {
+      return (
         <div>
-          <SearchResults results={this.state.results}/>
+          <form className="search-form" action="/" method="GET" onSubmit={this.submitForm.bind(this)}>
+            <p>
+              <input type="search" onChange={this.handleChange} required="required"/>
+              <button type="submit" className="btn">Go!</button>
+            </p>
+          </form>
+          <div>
+            <SearchResults results={this.state.results}/>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

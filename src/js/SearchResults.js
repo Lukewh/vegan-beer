@@ -9,7 +9,7 @@ class SearchResults extends React.Component {
           {
             this.props.results.map((beer) => {
               return (
-                <div key={beer.company.id}>
+                <div className="search-result" key={beer.company.id}>
                   <div>{beer.company.company_name}</div>
                   <div>{beer.company.status}</div>
                 </div>
