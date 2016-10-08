@@ -1,0 +1,23 @@
+{
+  "name": "vegan-beer",
+  "version": "0.0.1",
+  "description": "A simple app based on the Barnivore API to check whether or not a beer is vegan-friendly",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steverydz/vegan-beer.git"
+  },
+  "keywords": [
+    "vegan",
+    "beer",
+    "barnivore"
+  ],
+  "author": "Steve Rydz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steverydz/vegan-beer/issues"
+  },
+  "homepage": "https://github.com/steverydz/vegan-beer#readme"
+}
