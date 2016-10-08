@@ -18,7 +18,11 @@ const config = {
         loader: 'babel'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin()
+  ]
 };
 
 module.exports = config;
