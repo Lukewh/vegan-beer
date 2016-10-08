@@ -1,2 +1,3 @@
 node_modules/
 app/public/css/
+config/app-config.js

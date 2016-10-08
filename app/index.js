@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+
 const router = express.Router();
 const app = express();
+
+const config = require('../config/app-config');
+
 const barnivoreBeerApiUrl = 'http://barnivore.com/beer.json';
 const barnivoreSearchApiUrl = 'http://barnivore.com/search.json?keyword=';
 
@@ -62,6 +66,6 @@ app.use('/', router);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000, () => {
-  console.log('App is running on port 3000');
+app.listen(config.port, () => {
+  console.log(`App is running on port ${config.port}`);
 });
