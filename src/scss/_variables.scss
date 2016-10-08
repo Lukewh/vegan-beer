@@ -9,15 +9,15 @@ $gray-light: #818a91 !default;
 $gray-lighter: #eceeef !default;
 $gray-lightest: #f7f7f9 !default;
 
-$brand-primary: #0275d8 !default;
+$brand-primary: #e8c75d !default;
 $brand-success: #5cb85c !default;
 $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
 $brand-danger: #d9534f !default;
 $brand-inverse: $gray-dark !default;
 
-$body-bg: #fff !default;
-$body-color: $gray-dark !default;
+$body-bg: #584949 !default;
+$body-color: #fff !default;
 
 $font-size-base: 1rem !default;
 $font-size-lg: 1.25rem !default;
@@ -61,10 +61,10 @@ $spacers: (
 ) !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
-$headings-font-family: inherit !default;
+$headings-font-family: "Ewert", $font-family-base !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.1 !default;
-$headings-color: inherit !default;
+$headings-color: $brand-primary !default;
 
 $grid-breakpoints: (
   xs: 0,
