@@ -27,7 +27,7 @@ const paths = {
     dest: './app/public/css'
   },
   js: {
-    src: './src/js/app.js',
+    src: './src/js/App.js',
     dest: './app/public/js'
   }
 };
