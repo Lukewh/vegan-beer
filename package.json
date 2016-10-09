@@ -2,7 +2,7 @@
   "name": "vegan-beer",
   "version": "0.0.1",
   "description": "A simple app based on the Barnivore API to check whether or not a beer is vegan-friendly",
-  "main": "./app/index.js",
+  "main": "./app/server.js",
   "scripts": {},
   "repository": {
     "type": "git",
