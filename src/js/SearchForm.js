@@ -47,7 +47,9 @@ class SearchForm extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <div>Loading...</div>
+        <div>
+          <img src="/img/gears.svg" alt="Loading..."/>
+        </div>
       );
     } else {
       return (
