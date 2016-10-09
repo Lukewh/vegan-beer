@@ -1,7 +1,4 @@
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif: Georgia, "Times New Roman", Times, serif !default;
-$font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base: $font-family-sans-serif !default;
+$font-family-base: "Open Sans", "Helvetica Neue", Arial, sans-serif !default;
 
 $gray-dark: #373a3c !default;
 $gray: #55595c !default;
@@ -61,8 +58,8 @@ $spacers: (
 ) !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
-$headings-font-family: "Ewert", $font-family-base !default;
-$headings-font-weight: 500 !default;
+$headings-font-family: $font-family-base !default;
+$headings-font-weight: 800 !default;
 $headings-line-height: 1.1 !default;
 $headings-color: $brand-primary !default;
 
